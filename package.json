@@ -1,6 +1,6 @@
 {
   "name": "go-webauthn-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "WebAuthn cross compiled from Go to WASM",
   "main": "index.js",
   "scripts": {

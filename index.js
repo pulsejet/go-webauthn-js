@@ -19,7 +19,7 @@ function initialize(configuration, callback) {
 function beginRegistration(user, callback) {
     return WebAuthnGoWASM.BeginRegistration(
         JSON.stringify(user),
-        callback
+        (err, data) => callback(err, JSON.parse(data))
     );
 }
 
@@ -29,7 +29,7 @@ function finishRegistration(user, registrationSessionData, registrationBody, cal
         JSON.stringify(user),
         JSON.stringify(registrationSessionData),
         JSON.stringify(registrationBody),
-        callback
+        (err, data) => callback(err, JSON.parse(data))
     );
 }
 
@@ -37,7 +37,7 @@ function finishRegistration(user, registrationSessionData, registrationBody, cal
 function beginLogin(user, callback) {
     return WebAuthnGoWASM.BeginLogin(
         JSON.stringify(user),
-        callback
+        (err, data) => callback(err, JSON.parse(data))
     );
 }
 
@@ -47,7 +47,7 @@ function finishLogin(user, authenticationSessionData, authenticationBody, callba
         JSON.stringify(user),
         JSON.stringify(authenticationSessionData),
         JSON.stringify(authenticationBody),
-        callback
+        (err, data) => callback(err, data)
     );
 }
 
