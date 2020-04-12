@@ -1,0 +1,24 @@
+{
+  "name": "go-webauthn-js",
+  "version": "0.0.1",
+  "description": "WebAuthn cross compiled from Go to WASM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pulsejet/go-webauthn-js.git"
+  },
+  "keywords": [
+    "webauthn",
+    "golang",
+    "wasm"
+  ],
+  "author": "Varun Patil <radialapps@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pulsejet/go-webauthn-js/issues"
+  },
+  "homepage": "https://github.com/pulsejet/go-webauthn-js#readme"
+}
