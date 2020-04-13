@@ -83,6 +83,8 @@ require(path.resolve(__dirname, './load'));
 /** Initialize JS module and internal server */
 export function initialize(configuration: Config, callback: CreateContextCallback): void {
     require(path.resolve(__dirname, './go-webauthn'));
+    if (!WebAuthnGoJS) WebAuthnGoJS = (global as any).WebAuthnGoJS;
+
     return WebAuthnGoJS.CreateContext(JSON.stringify(configuration), callback);
 }
 

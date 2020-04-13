@@ -33,11 +33,11 @@ if (!$global.process) {
 	}
 }
 
-$global.process.getuid = $global.process.getuid || function() { return -1; }
-$global.process.getgid = $global.process.getgid || function() { return -1; }
-$global.process.geteuid = $global.process.geteuid || function() { return -1; }
-$global.process.getegid = $global.process.getegid || function() { return -1; }
-$global.process.pid = $global.process.pid || -1;
-$global.process.ppid = $global.process.ppid || -1;
-$global.process.env = $global.process.env || {};
-$global.process.argv = $global.process.argv || ['node'];
+if (!$global.process.getuid) $global.process.getuid = $global.process.getuid || function () { return -1; };
+if (!$global.process.getgid) $global.process.getgid = $global.process.getgid || function () { return -1; };
+if (!$global.process.geteuid) $global.process.geteuid = $global.process.geteuid || function () { return -1; };
+if (!$global.process.getegid) $global.process.getegid = $global.process.getegid || function () { return -1; };
+if (!$global.process.pid) $global.process.pid = $global.process.pid || -1;
+if (!$global.process.ppid) $global.process.ppid = $global.process.ppid || -1;
+if (!$global.process.env) $global.process.env = $global.process.env || {};
+if (!$global.process.argv) $global.process.argv = $global.process.argv || ['node'];
