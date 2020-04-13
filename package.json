@@ -1,6 +1,6 @@
 {
   "name": "go-webauthn-js",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "WebAuthn cross compiled from Go to JS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

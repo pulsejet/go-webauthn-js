@@ -76,6 +76,8 @@ func beginRegistration(this js.Value, inputs []js.Value) interface{} {
 	options, sessionData, err := webAuthn.BeginRegistration(
 		user,
 		registerOptions,
+		webauthn.WithAuthenticatorSelection(webAuthn.Config.AuthenticatorSelection),
+		webauthn.WithConveyancePreference(webAuthn.Config.AttestationPreference),
 	)
 	if err != nil {
 		callback.Invoke(err.Error(), js.Null())
