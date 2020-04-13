@@ -5,12 +5,12 @@ require(path.resolve(__dirname, './load'));
 /** Initialize JS module and internal server */
 function initialize(configuration, callback) {
     require(path.resolve(__dirname, './go-webauthn'));
-    return WebAuthnGoWASM.CreateContext(JSON.stringify(configuration), callback);
+    return WebAuthnGoJS.CreateContext(JSON.stringify(configuration), callback);
 }
 
 /** Start registration with WebAuthn */
 function beginRegistration(user, callback) {
-    return WebAuthnGoWASM.BeginRegistration(
+    return WebAuthnGoJS.BeginRegistration(
         JSON.stringify(user),
         (err, data) => callback(err, JSON.parse(data))
     );
@@ -18,7 +18,7 @@ function beginRegistration(user, callback) {
 
 /** Finish registration with WebAuthn */
 function finishRegistration(user, registrationSessionData, registrationBody, callback) {
-    return WebAuthnGoWASM.FinishRegistration(
+    return WebAuthnGoJS.FinishRegistration(
         JSON.stringify(user),
         JSON.stringify(registrationSessionData),
         JSON.stringify(registrationBody),
@@ -28,7 +28,7 @@ function finishRegistration(user, registrationSessionData, registrationBody, cal
 
 /** Start authentication with WebAuthn */
 function beginLogin(user, callback) {
-    return WebAuthnGoWASM.BeginLogin(
+    return WebAuthnGoJS.BeginLogin(
         JSON.stringify(user),
         (err, data) => callback(err, JSON.parse(data))
     );
@@ -36,7 +36,7 @@ function beginLogin(user, callback) {
 
 /** Finish authentication with WebAuthn */
 function finishLogin(user, authenticationSessionData, authenticationBody, callback) {
-    return WebAuthnGoWASM.FinishLogin(
+    return WebAuthnGoJS.FinishLogin(
         JSON.stringify(user),
         JSON.stringify(authenticationSessionData),
         JSON.stringify(authenticationBody),

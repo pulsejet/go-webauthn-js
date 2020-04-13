@@ -23,7 +23,7 @@ func main() {
 	exp["FinishLogin"] = js.FuncOf(finishLogin)
 
 	// Export globally to JS
-	js.Global().Set("WebAuthnGoWASM", exp)
+	js.Global().Set("WebAuthnGoJS", exp)
 }
 
 // createContext creates a new webauthn instance from the config

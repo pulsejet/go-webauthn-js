@@ -67,7 +67,7 @@
     }
 
     function initialize() {
-      WebAuthnGoWASM.CreateContext(JSON.stringify({
+      WebAuthnGoJS.CreateContext(JSON.stringify({
         RPDisplayName: "Foobar Corp.",
 		    RPID:          window.location.hostname,
 		    RPOrigin:      window.location.origin,
@@ -114,7 +114,7 @@
       const user = users[username];
       const userStr = JSON.stringify(user);
 
-      WebAuthnGoWASM.BeginRegistration(userStr, (err, data) => {
+      WebAuthnGoJS.BeginRegistration(userStr, (err, data) => {
         if (err) {
           alert(err); return;
         }
@@ -146,7 +146,7 @@
           const regBodyStr = JSON.stringify(registrationBody);
           const sessDataStr = JSON.stringify(users[username].registrationSessionData)
 
-          WebAuthnGoWASM.FinishRegistration(userStr, sessDataStr, regBodyStr, (err, result) => {
+          WebAuthnGoJS.FinishRegistration(userStr, sessDataStr, regBodyStr, (err, result) => {
             delete users[username].registrationSessionData;
 
             if (err) alert(err);
@@ -190,7 +190,7 @@
         })
       }
 
-      WebAuthnGoWASM.BeginLogin(userStr, (err, data) => {
+      WebAuthnGoJS.BeginLogin(userStr, (err, data) => {
         if (err) {
           alert(err); return;
         }
@@ -225,7 +225,7 @@
           const loginBodyStr = JSON.stringify(finishLoginObj);
           const authSessDataStr = JSON.stringify(user.authenticationSessionData)
 
-          WebAuthnGoWASM.FinishLogin(userStr, authSessDataStr, loginBodyStr, (err, result) => {
+          WebAuthnGoJS.FinishLogin(userStr, authSessDataStr, loginBodyStr, (err, result) => {
             delete user.authenticationSessionData;
             showUsers();
             alert(err || result);
