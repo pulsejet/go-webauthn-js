@@ -6,7 +6,7 @@
   <title>WebAuthn Demo</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-  <script src="wasm_exec.js"></script>
+  <script src="load.js"></script>
 </head>
 
 <body>
@@ -239,13 +239,8 @@
     }
   </script>
 
-  <script>
-    const go = new Go();
-    WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
-      go.run(result.instance);
-      initialize();
-    });
-  </script>
+  <script src="go-webauthn-js.min.js"></script>
+  <script> initialize(); </script>
 
 </body>
 

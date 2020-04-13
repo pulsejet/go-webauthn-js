@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"io/ioutil"
-	"net/http"
 
 	"syscall/js"
 
@@ -15,8 +14,6 @@ import (
 var webAuthn *webauthn.WebAuthn
 
 func main() {
-	c := make(chan bool)
-
 	exp := make(map[string]interface{})
 
 	exp["CreateContext"] = js.FuncOf(createContext)
@@ -27,8 +24,6 @@ func main() {
 
 	// Export globally to JS
 	js.Global().Set("WebAuthnGoWASM", exp)
-
-	<-c
 }
 
 // createContext creates a new webauthn instance from the config
@@ -124,7 +119,7 @@ func finishRegistration(this js.Value, inputs []js.Value) interface{} {
 		return js.Null()
 	}
 
-	r := http.Request{}
+	r := protocol.Request{}
 	r.Body = ioutil.NopCloser(bytes.NewReader([]byte(body)))
 	credential, err := webAuthn.FinishRegistration(user, sessionData, &r)
 	if err != nil {
@@ -205,7 +200,7 @@ func finishLogin(this js.Value, inputs []js.Value) interface{} {
 	// TODO: perform additional checks on the returned 'credential',
 	// i.e. check 'credential.Authenticator.CloneWarning'
 	// and then increment the credentials counter
-	r := http.Request{}
+	r := protocol.Request{}
 	r.Body = ioutil.NopCloser(bytes.NewReader([]byte(body)))
 	_, err = webAuthn.FinishLogin(user, sessionData, &r)
 	if err != nil {

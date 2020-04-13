@@ -1,18 +1,11 @@
 const path = require('path');
-const fs = require('fs');
 
-require(path.resolve(__dirname, './wasm_exec'));
+require(path.resolve(__dirname, './load'));
 
-/** Initialize WASM module and internal server */
+/** Initialize JS module and internal server */
 function initialize(configuration, callback) {
-    const go = new Go();
-    WebAssembly.instantiate(fs.readFileSync(path.resolve(__dirname, './main.wasm')), go.importObject).then((result) => {
-        go.run(result.instance);
-        WebAuthnGoWASM.CreateContext(JSON.stringify(configuration), callback);
-    }).catch((err) => {
-        callback(err, null);
-    });
-    return go;
+    require(path.resolve(__dirname, './go-webauthn'));
+    return WebAuthnGoWASM.CreateContext(JSON.stringify(configuration), callback);
 }
 
 /** Start registration with WebAuthn */
