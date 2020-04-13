@@ -81,13 +81,13 @@ var WebAuthnGoJS: WebAuthnGoJSI;
 require(path.resolve(__dirname, './load'));
 
 /** Initialize JS module and internal server */
-function initialize(configuration: Config, callback: CreateContextCallback): void {
+export function initialize(configuration: Config, callback: CreateContextCallback): void {
     require(path.resolve(__dirname, './go-webauthn'));
     return WebAuthnGoJS.CreateContext(JSON.stringify(configuration), callback);
 }
 
 /** Start registration with WebAuthn */
-function beginRegistration(
+export function beginRegistration(
     user: User,
     callback: BeginRegistrationCallback
 ): void {
@@ -102,7 +102,7 @@ function beginRegistration(
 }
 
 /** Finish registration with WebAuthn */
-function finishRegistration(
+export function finishRegistration(
     user: User,
     registrationSessionData: any,
     registrationBody: RegistrationBody,
@@ -119,7 +119,7 @@ function finishRegistration(
 }
 
 /** Start authentication with WebAuthn */
-function beginLogin(
+export function beginLogin(
     user: User,
     callback: BeginLoginCallback,
 ): void {
@@ -132,7 +132,7 @@ function beginLogin(
 }
 
 /** Finish authentication with WebAuthn */
-function finishLogin(
+export function finishLogin(
     user: User,
     authenticationSessionData: any,
     authenticationBody: AuthenticationBody,
@@ -146,10 +146,4 @@ function finishLogin(
         JSON.stringify(authenticationBody),
         callback,
     );
-}
-
-module.exports = {
-    initialize,
-    beginRegistration, finishRegistration,
-    beginLogin, finishLogin,
 }
