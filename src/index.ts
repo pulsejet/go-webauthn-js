@@ -1,20 +1,20 @@
 const path = require('path');
 
 // Typings for WebAuthnGoJS
-type CreateContextCallback = (err?: string, success?: string) => void;
-type BeginRegistrationCallback = (err?: string, data?: {
+export type CreateContextCallback = (err?: string, success?: string) => void;
+export type BeginRegistrationCallback = (err?: string, data?: {
     registrationSessionData: any,
     credentialCreationOptions: CredentialCreationOptions,
 }) => void;
-type FinishRegistrationCallback = (err?: string, credential?: any) => void;
-type BeginLoginCallback = (err?: string, data?: {
+export type FinishRegistrationCallback = (err?: string, credential?: any) => void;
+export type BeginLoginCallback = (err?: string, data?: {
     authenticationSessionData: any,
     credentialRequestOptions: CredentialRequestOptions,
 }) => void;
-type FinishLoginCallback = (err?: string, success?: string) => void;
+export type FinishLoginCallback = (err?: string, success?: string) => void;
 
 // POSTed objects
-type RegistrationBody = {
+export type RegistrationBody = {
     id: string,
     rawId: string,
     type: string,
@@ -24,7 +24,7 @@ type RegistrationBody = {
     },
 }
 
-type AuthenticationBody = {
+export type AuthenticationBody = {
     id: string,
     rawId: string,
     type: string,
@@ -48,14 +48,14 @@ type WebAuthnGoJSI = {
     FinishLogin: (user: string, sessData: string, body: string, callback: GoCallback) => void,
 }
 
-type AuthenticatorSelection = {
+export type AuthenticatorSelection = {
 	authenticatorAttachment?: AuthenticatorAttachment;
 	requireResidentKey?: boolean;
 	userVerification?: UserVerificationRequirement;
 }
 
 /** Configuration for the WebAuthn server */
-type Config = {
+export type Config = {
     RPDisplayName: string;
     RPID: string;
     RPOrigin: string;
@@ -69,7 +69,7 @@ type Config = {
 }
 
 /** User represents the user model  */
-type User = {
+export type User = {
 	id: number;
 	name: string;
 	displayName: string;
