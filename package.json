@@ -1,7 +1,7 @@
 {
   "name": "go-webauthn-js",
-  "version": "0.0.2",
-  "description": "WebAuthn cross compiled from Go to WASM",
+  "version": "0.0.3",
+  "description": "WebAuthn cross compiled from Go to JS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
