@@ -1,6 +1,6 @@
 {
   "name": "go-webauthn-js",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "WebAuthn cross compiled from Go to JS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,7 +9,9 @@
     "go": "cross-env GOOS=linux gopherjs build -o lib/go-webauthn.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pulsejet/go-webauthn-js.git"

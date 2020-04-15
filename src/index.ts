@@ -6,12 +6,27 @@ export type BeginRegistrationCallback = (err?: string, data?: {
     registrationSessionData: any,
     credentialCreationOptions: CredentialCreationOptions,
 }) => void;
-export type FinishRegistrationCallback = (err?: string, credential?: any) => void;
+export type FinishRegistrationCallback = (err?: string, credential?: Credential) => void;
 export type BeginLoginCallback = (err?: string, data?: {
     authenticationSessionData: any,
     credentialRequestOptions: CredentialRequestOptions,
 }) => void;
-export type FinishLoginCallback = (err?: string, success?: string) => void;
+export type FinishLoginCallback = (err?: string, credential?: Credential) => void;
+
+// Device authenticating
+export type Authenticator = {
+	AAGUID: string;
+	SignCount: number;
+	CloneWarning: boolean;
+}
+
+// Credential to store
+export type Credential = {
+	ID: string;
+	PublicKey: string;
+	AttestationType: string;
+	Authenticator: Authenticator;
+}
 
 // POSTed objects
 export type RegistrationBody = {
@@ -146,6 +161,6 @@ export function finishLogin(
         JSON.stringify(user),
         JSON.stringify(authenticationSessionData),
         JSON.stringify(authenticationBody),
-        callback,
+        (err, data) => callback(err, data ? JSON.parse(data) : null)
     );
 }

@@ -199,18 +199,16 @@ func finishLogin(this js.Value, inputs []js.Value) interface{} {
 		return js.Null()
 	}
 
-	// TODO: perform additional checks on the returned 'credential',
-	// i.e. check 'credential.Authenticator.CloneWarning'
-	// and then increment the credentials counter
+	// Return the used credential
 	r := protocol.Request{}
 	r.Body = ioutil.NopCloser(bytes.NewReader([]byte(body)))
-	_, err = webAuthn.FinishLogin(user, sessionData, &r)
+	credential, err := webAuthn.FinishLogin(user, sessionData, &r)
 	if err != nil {
 		callback.Invoke(err.Error(), js.Null())
 		return js.Null()
 	}
 
-	callback.Invoke(js.Null(), "Login Success")
+	callback.Invoke(js.Null(), responseJS(*credential))
 	return js.Null()
 }
 
