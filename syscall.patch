@@ -1,0 +1,13 @@
+--- go-webauthn-o.js	2020-04-26 23:22:32.985286200 +0530
++++ go-webauthn.js	2020-04-26 23:22:07.104793400 +0530
+@@ -66843,8 +66843,8 @@
+ 		$r = time.$init(); /* */ $s = 13; case 13: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+ 		global = newDefaultGenerator();
+ 		epochFunc = unixTimeFunc;
+-		posixUID = ((os.Getuid() >>> 0));
+-		posixGID = ((os.Getgid() >>> 0));
++		posixUID = ((0 >>> 0));
++		posixGID = ((0 >>> 0));
+ 		urnPrefix = (new sliceType($stringToBytes("urn:uuid:")));
+ 		byteGroups = new sliceType$1([8, 4, 4, 4, 12]);
+ 		_r = FromString("6ba7b810-9dad-11d1-80b4-00c04fd430c8"); /* */ $s = 14; case 14: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }

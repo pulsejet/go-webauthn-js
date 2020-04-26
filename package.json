@@ -1,12 +1,12 @@
 {
   "name": "go-webauthn-js",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "WebAuthn cross compiled from Go to JS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "go": "cross-env GOOS=linux gopherjs build -o lib/go-webauthn.js",
+    "go": "cross-env GOOS=linux gopherjs build -o lib/go-webauthn.js && rimraf lib/go-webauthn.js.map",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
@@ -30,6 +30,7 @@
   "devDependencies": {
     "@types/node": "^13.11.1",
     "cross-env": "^7.0.2",
+    "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
   }
 }
